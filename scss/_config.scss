@@ -1,0 +1,67 @@
+/*for all vars and funcs/mixins*/
+
+$primary-color: #444;
+$secondary-color: #eece1a;
+$show-home-image: true;
+$home-image: url(../img/background.jpg);
+$background-opacity: 0.85;
+
+@mixin easeOut{ /*funktion easeOut für transition*/
+    transition: all 0.5s ease-out;
+}
+
+@mixin background{
+    @if $show-home-image{
+        &#bg-img{
+            background: $home-image;
+            background-attachment: fixed;
+            background-size: cover;
+
+            &:after{ /*supposed to cover screen*/
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 100%;
+                height:100%;
+                background: rgba($primary-color, $background-opacity);
+                z-index: -1;
+                content:"";
+            }
+        }
+    }
+}
+
+// Set Text Color -> dark bg, light text
+@function set-text-color($color){
+    @if (lightness($color) > 40){
+        @return black;
+    }@else{
+        @return white;
+    }
+}
+
+// Media Query Mixins
+@mixin mediaSm {
+    @media screen and (max-width: 500px){ //500px or less
+        @content; //you can put smth inside when using mediaSm
+    }
+}
+
+
+@mixin mediaMd {
+    @media screen and (max-width: 768px){ //768px or less
+        @content; //you can put smth inside when using mediaSm
+    }
+}
+
+@mixin mediaLg {
+    @media screen and (min-width: 769px) and (max-width: 1170px){ //between 769px and 1170px
+        @content; //you can put smth inside when using mediaSm
+    }
+}
+
+@mixin mediaXl {
+    @media screen and (min-width: 1171px){ //1171px or more
+        @content; //you can put smth inside when using mediaSm
+    }
+}

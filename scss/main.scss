@@ -1,0 +1,175 @@
+@import 'config'; /*imports config file with vars etc*/
+@import 'menu';
+@import 'contact';
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    @include background;
+    background: $primary-color;
+    color: set-text-color($primary-color);
+    min-height: calc(100vh);
+    margin: 0;
+    font-family: 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.5;
+}
+
+// Headings
+
+h1,
+ h2, 
+  h3{
+    margin: 0;
+    font-weight: 400;
+
+    &.lg-heading{ /*nested class of h1 2 or 3 */
+        font-size: 6rem;
+    }
+
+    &.sm-heading{ /* -||- */
+        margin-bottom: 2rem;
+        padding: 0.2rem 1rem;
+        background: rgba(lighten($color: $primary-color, $amount: 2), 0.5);/*background erhellt*/
+
+    }
+}
+
+a{
+    color: white;
+    text-decoration: none;
+}
+
+header{
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+}
+
+.secondary{
+    color: $secondary-color;
+}
+
+main{
+    padding: 4rem;
+    height: 100%;
+
+    .icons{ /*icons class inside main tag only*/
+        margin-top: 1rem;
+
+        a{
+            padding: 0.4rem;
+
+            &:hover{ /*hover of a*/
+                color: $secondary-color;
+                @include easeOut(); /*easeOut funk*/
+            }
+        }
+    }
+
+    &#home{/*affects any main with id of home*/
+        overflow: hidden;
+        h1{
+            margin-top: 20vh;
+        }
+    }
+}
+
+.about-info{
+    display: grid;
+    grid-gap: 30px;
+    grid-template-areas:
+    'bioimage bio bio'
+    'job1 job2 job3';
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.bio-image{
+    grid-area: bioimage;
+    margin: auto;
+    border-radius: 50%;
+    border: $secondary-color 3px solid;
+    width: 250px;
+    height: 250px;
+}
+
+.bio{
+    grid-area: bio;
+    font-size: 1.5rem;
+}
+
+.job-1{
+    grid-area: job1;
+}
+
+.job-2{
+    grid-area: job2;
+}
+
+.job-3{
+    grid-area: job3;
+}
+
+.job{
+    background: lighten($primary-color, 5);
+    padding: 0.5rem;
+    border-bottom: $secondary-color 5px solid;
+}
+
+// Work / Projects
+.projects{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0.7rem;
+
+    img{
+        width: 100%;
+        border: 3px white solid;
+        
+
+        &:hover{
+            opacity: 0.5;
+            border-color: $secondary-color;
+            @include easeOut;
+        }
+    }
+}
+
+// Button Styles
+.btn{
+    display: block;
+    padding: 0.5rem 1rem;
+    border: 0;
+    margin-bottom: 0.3rem;
+
+    &:hover{
+        background: $secondary-color;
+        color: set-text-color($secondary-color);
+    }
+}
+
+.btn-dark{
+    @extend .btn; //extends .btn class into this
+    background: darken($primary-color, 50);
+    color: white;
+}
+
+.btn-light{
+    @extend .btn;
+    background: lighten($primary-color, 50);
+    color: #333;
+}
+
+#main-footer{
+    text-align: center;
+    padding: 1rem;
+    background: darken($primary-color, 10);
+    color: set-text-color($primary-color);
+    height: 60px;
+}
+
+
+
+@import 'mobile';
+//run after initial scss
