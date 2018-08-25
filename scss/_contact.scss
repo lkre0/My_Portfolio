@@ -24,7 +24,8 @@
 
             &:hover{
                 background: rgba(255, 255, 255, 0.178);
-                transform: scale(1.04)
+                transform: scale(1.04);
+                cursor: pointer;
             }
         }
 

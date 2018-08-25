@@ -29,7 +29,7 @@
   position: fixed;
   top: 0;
   width: 100%;
-  opacity: 0.9;
+  opacity: 1;
   visibility: hidden; }
   .menu.show {
     visibility: visible; }
@@ -123,7 +123,8 @@
     margin-top: 3rem; }
     #contact .contact-form button:hover {
       background: rgba(255, 255, 255, 0.178);
-      transform: scale(1.04); }
+      transform: scale(1.04);
+      cursor: pointer; }
   #contact .contact-form input {
     border: none;
     border-bottom: 1px solid #eece1a;
